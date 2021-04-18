@@ -1,0 +1,12 @@
+22/12 19/01 capricorn
+20/01 18/02 aquarius
+19/02 20/03 pisces
+21/03 19/04 aries
+20/04 20/05 taurus
+21/05 20/06 gemini
+21/06 22/07 cancer
+23/07 22/08 virgo
+23/08 22/09 leo
+23/09 21/10 libra
+22/10 21/11 scorpio
+22/11 21/12 sagittarius
