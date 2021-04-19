@@ -36,9 +36,13 @@ public class Main {
                     System.out.println("The date is: ");
 
                     String date = read.next();
-
                     ZodiacHelper helper = new ZodiacHelper();
-                    if (helper.isDateValid(date)) {
+                    while (!helper.isDateValid(date)) {
+                        System.out.println("Incorrect date!");
+                        date = input.next();
+                    }
+
+
                         zodiacStub.getZodiacSign(Gate.ZodiacRequest.newBuilder().setOption(option).setDate(date).build(),
                                 new StreamObserver<Gate.ZodiacResponse>() {
                                     @Override
@@ -58,7 +62,7 @@ public class Main {
                                 });
                         break;
                     }
-                }
+
 
             case 3: {
                 isConnected = false;

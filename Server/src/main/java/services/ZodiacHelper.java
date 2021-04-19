@@ -102,16 +102,21 @@ public class ZodiacHelper {
         DateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
         Date date1 = dateFormat.parse(date);
 
-        System.out.println(date1);
+
+        DateFormat dateFormat2 = new SimpleDateFormat("YYYY");
+        String year = "/" + dateFormat2.format(date1).toUpperCase();
+
         for(Map.Entry<Map<String,String>,String> entry : zodiacSigns.entrySet())
         {
             Map<String,String> dates = entry.getKey();
             String name = entry.getValue();
             for(Map.Entry<String,String> entry1 : dates.entrySet()) {
-                String b= entry1.getKey()+date.substring(5,10);
+
+                String b= entry1.getKey()+ year;
 
                 Date begin = dateFormat.parse(b);
-                String e= entry1.getValue()+date.substring(5,10);
+
+                String e= entry1.getValue() + year;
 
                 Date end = dateFormat.parse(e);
 
@@ -134,14 +139,19 @@ public class ZodiacHelper {
             System.out.println(e.getMessage());
         }
 
-        String saa=date.substring(6,10);
+        DateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
+        Date date1 = dateFormat.parse(date);
+
+
+        DateFormat dateFormat2 = new SimpleDateFormat("YYYY");
+        String year = "/" + dateFormat2.format(date1).toUpperCase();
 
         for (Map.Entry<ArrayList<String>, String> entry : zodiacSigns.entrySet()) {
             ArrayList<String> years = entry.getKey();
             String name = entry.getValue();
             for (String s : years) {
 
-                if (saa.equals(s)) {
+                if (year.equals(s)) {
                     return name;
                 }
             }
