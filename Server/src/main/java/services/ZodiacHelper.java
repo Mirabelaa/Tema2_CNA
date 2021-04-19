@@ -139,12 +139,7 @@ public class ZodiacHelper {
             System.out.println(e.getMessage());
         }
 
-        DateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = dateFormat.parse(date);
-
-
-        DateFormat dateFormat2 = new SimpleDateFormat("YYYY");
-        String year = "/" + dateFormat2.format(date1).toUpperCase();
+        String year = date.substring(date.length()-4);
 
         for (Map.Entry<ArrayList<String>, String> entry : zodiacSigns.entrySet()) {
             ArrayList<String> years = entry.getKey();
