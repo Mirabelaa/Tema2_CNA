@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "proto";
+import "gate.proto";
+
+service ChineseZodiacService{
+
+  rpc getZodiacSign(ZodiacRequest) returns (ZodiacResponse){}
+
+}

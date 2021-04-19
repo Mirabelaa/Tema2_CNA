@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "proto";
+
+service GateService{
+
+  rpc getZodiacSign(ZodiacRequest) returns (ZodiacResponse){}
+
+}
+
+message ZodiacRequest {
+  string date = 1;
+  int32 option=2;
+}
+
+message ZodiacResponse {
+  string zodiacSign = 1;
+}

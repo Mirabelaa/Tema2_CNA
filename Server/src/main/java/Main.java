@@ -1,7 +1,7 @@
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import services.GateImpl;
 import services.ZodiacImpl;
-
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ public class Main {
              * and it finds a service declaration in your proto file.
              * Do not forget the client must use the same port in order to connect to this server.
              * */
-            Server server = ServerBuilder.forPort(8999).addService(new ZodiacImpl()).build();
+            Server server = ServerBuilder.forPort(8999).addService(new GateImpl()).build();
 
             server.start();
 
