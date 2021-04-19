@@ -3,57 +3,73 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import proto.Gate;
 import proto.GateServiceGrpc;
-
-import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8999).usePlaintext().build();
-        /* Synchronous stub */
-        //BookServiceGrpc.BookServiceBlockingStub zodiacStub = BookServiceGrpc.newBlockingStub(channel);
 
-        /* To be capable to stream with out client we must use a Asynchronous stub */
         GateServiceGrpc.GateServiceStub zodiacStub = GateServiceGrpc.newStub(channel);
 
         System.out.println("MENU");
         System.out.println("Press 1 for European zodiac");
         System.out.println("Press 2 for chinese zodiac");
+        System.out.println("Press 3 to quit");
 
         boolean isConnected = true;
         while (isConnected) {
             Scanner input = new Scanner(System.in);
-            System.out.println("Choose:");
-            int option = input.nextInt();
-            Scanner read = new Scanner(System.in).useDelimiter("\n");
-            System.out.println("The date is: ");
 
-            String date = read.next();
+            int option =0;
+            try{
+                option  = input.nextInt();
+                int i;
+                i= Integer.parseInt(String.valueOf(option));
+            }catch(Exception e){
+                System.out.println("Not an integer");
+            }
+            switch (option){
+                case 1:
+                case 2: {
+                    Scanner read = new Scanner(System.in).useDelimiter("\n");
+                    System.out.println("The date is: ");
 
-            zodiacStub.getZodiacSign(Gate.ZodiacRequest.newBuilder().setOption(option).setDate(date).build(),
-                    new StreamObserver<Gate.ZodiacResponse>() {
-                        @Override
-                        public void onNext(Gate.ZodiacResponse zodiacResponse) {
-                            System.out.println(zodiacResponse);
-                        }
+                    String date = read.next();
 
-                        @Override
-                        public void onError(Throwable throwable) {
-                            System.out.println("Error : " + throwable.getMessage());
-                        }
+                    ZodiacHelper helper = new ZodiacHelper();
+                    if (helper.isDateValid(date)) {
+                        zodiacStub.getZodiacSign(Gate.ZodiacRequest.newBuilder().setOption(option).setDate(date).build(),
+                                new StreamObserver<Gate.ZodiacResponse>() {
+                                    @Override
+                                    public void onNext(Gate.ZodiacResponse zodiacResponse) {
+                                        System.out.println(zodiacResponse);
+                                    }
 
-                        @Override
-                        public void onCompleted() {
+                                    @Override
+                                    public void onError(Throwable throwable) {
+                                        System.out.println("Error : " + throwable.getMessage());
+                                    }
 
-                        }
-                    });
+                                    @Override
+                                    public void onCompleted() {
 
+                                    }
+                                });
+                        break;
+                    }
+                }
+
+            case 3: {
+                isConnected = false;
+                break;
+            }
+            default:
+                System.out.println("Unknown command, insert a valid command!");
         }
-        isConnected = false;
-        channel.shutdown();
 
+    }
+        channel.shutdown();
     }
 }
 
