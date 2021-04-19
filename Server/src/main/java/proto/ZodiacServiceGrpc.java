@@ -1,5 +1,8 @@
 package proto;
 
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
@@ -19,39 +22,39 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
-    comments = "Source: chineseZodiac.proto")
-public final class ChineseZodiacServiceGrpc {
+    comments = "Source: zodiac.proto")
+public final class ZodiacServiceGrpc {
 
-  private ChineseZodiacServiceGrpc() {}
+  private ZodiacServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "ChineseZodiacService";
+  public static final String SERVICE_NAME = "ZodiacService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<proto.ChineseZodiac.ZodiacRequest,
-      proto.ChineseZodiac.ZodiacResponse> getGetZodiacSignMethod;
+  private static volatile io.grpc.MethodDescriptor<proto.Gate.ZodiacRequest,
+      proto.Gate.ZodiacResponse> getGetZodiacSignMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getZodiacSign",
-      requestType = proto.ChineseZodiac.ZodiacRequest.class,
-      responseType = proto.ChineseZodiac.ZodiacResponse.class,
+      requestType = proto.Gate.ZodiacRequest.class,
+      responseType = proto.Gate.ZodiacResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ChineseZodiac.ZodiacRequest,
-      proto.ChineseZodiac.ZodiacResponse> getGetZodiacSignMethod() {
-    io.grpc.MethodDescriptor<proto.ChineseZodiac.ZodiacRequest, proto.ChineseZodiac.ZodiacResponse> getGetZodiacSignMethod;
-    if ((getGetZodiacSignMethod = ChineseZodiacServiceGrpc.getGetZodiacSignMethod) == null) {
-      synchronized (ChineseZodiacServiceGrpc.class) {
-        if ((getGetZodiacSignMethod = ChineseZodiacServiceGrpc.getGetZodiacSignMethod) == null) {
-          ChineseZodiacServiceGrpc.getGetZodiacSignMethod = getGetZodiacSignMethod = 
-              io.grpc.MethodDescriptor.<proto.ChineseZodiac.ZodiacRequest, proto.ChineseZodiac.ZodiacResponse>newBuilder()
+  public static io.grpc.MethodDescriptor<proto.Gate.ZodiacRequest,
+      proto.Gate.ZodiacResponse> getGetZodiacSignMethod() {
+    io.grpc.MethodDescriptor<proto.Gate.ZodiacRequest, proto.Gate.ZodiacResponse> getGetZodiacSignMethod;
+    if ((getGetZodiacSignMethod = ZodiacServiceGrpc.getGetZodiacSignMethod) == null) {
+      synchronized (ZodiacServiceGrpc.class) {
+        if ((getGetZodiacSignMethod = ZodiacServiceGrpc.getGetZodiacSignMethod) == null) {
+          ZodiacServiceGrpc.getGetZodiacSignMethod = getGetZodiacSignMethod = 
+              io.grpc.MethodDescriptor.<proto.Gate.ZodiacRequest, proto.Gate.ZodiacResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "ChineseZodiacService", "getZodiacSign"))
+                  "ZodiacService", "getZodiacSign"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ChineseZodiac.ZodiacRequest.getDefaultInstance()))
+                  proto.Gate.ZodiacRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ChineseZodiac.ZodiacResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new ChineseZodiacServiceMethodDescriptorSupplier("getZodiacSign"))
+                  proto.Gate.ZodiacResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new ZodiacServiceMethodDescriptorSupplier("getZodiacSign"))
                   .build();
           }
         }
@@ -62,34 +65,34 @@ public final class ChineseZodiacServiceGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static ChineseZodiacServiceStub newStub(io.grpc.Channel channel) {
-    return new ChineseZodiacServiceStub(channel);
+  public static ZodiacServiceStub newStub(io.grpc.Channel channel) {
+    return new ZodiacServiceStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static ChineseZodiacServiceBlockingStub newBlockingStub(
+  public static ZodiacServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new ChineseZodiacServiceBlockingStub(channel);
+    return new ZodiacServiceBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static ChineseZodiacServiceFutureStub newFutureStub(
+  public static ZodiacServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new ChineseZodiacServiceFutureStub(channel);
+    return new ZodiacServiceFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class ChineseZodiacServiceImplBase implements io.grpc.BindableService {
+  public static abstract class ZodiacServiceImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void getZodiacSign(proto.ChineseZodiac.ZodiacRequest request,
-        io.grpc.stub.StreamObserver<proto.ChineseZodiac.ZodiacResponse> responseObserver) {
+    public void getZodiacSign(proto.Gate.ZodiacRequest request,
+        io.grpc.stub.StreamObserver<proto.Gate.ZodiacResponse> responseObserver) throws FileNotFoundException, ParseException {
       asyncUnimplementedUnaryCall(getGetZodiacSignMethod(), responseObserver);
     }
 
@@ -99,8 +102,8 @@ public final class ChineseZodiacServiceGrpc {
             getGetZodiacSignMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                proto.ChineseZodiac.ZodiacRequest,
-                proto.ChineseZodiac.ZodiacResponse>(
+                proto.Gate.ZodiacRequest,
+                proto.Gate.ZodiacResponse>(
                   this, METHODID_GET_ZODIAC_SIGN)))
           .build();
     }
@@ -108,26 +111,26 @@ public final class ChineseZodiacServiceGrpc {
 
   /**
    */
-  public static final class ChineseZodiacServiceStub extends io.grpc.stub.AbstractStub<ChineseZodiacServiceStub> {
-    private ChineseZodiacServiceStub(io.grpc.Channel channel) {
+  public static final class ZodiacServiceStub extends io.grpc.stub.AbstractStub<ZodiacServiceStub> {
+    private ZodiacServiceStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private ChineseZodiacServiceStub(io.grpc.Channel channel,
+    private ZodiacServiceStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected ChineseZodiacServiceStub build(io.grpc.Channel channel,
+    protected ZodiacServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new ChineseZodiacServiceStub(channel, callOptions);
+      return new ZodiacServiceStub(channel, callOptions);
     }
 
     /**
      */
-    public void getZodiacSign(proto.ChineseZodiac.ZodiacRequest request,
-        io.grpc.stub.StreamObserver<proto.ChineseZodiac.ZodiacResponse> responseObserver) {
+    public void getZodiacSign(proto.Gate.ZodiacRequest request,
+        io.grpc.stub.StreamObserver<proto.Gate.ZodiacResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetZodiacSignMethod(), getCallOptions()), request, responseObserver);
     }
@@ -135,25 +138,25 @@ public final class ChineseZodiacServiceGrpc {
 
   /**
    */
-  public static final class ChineseZodiacServiceBlockingStub extends io.grpc.stub.AbstractStub<ChineseZodiacServiceBlockingStub> {
-    private ChineseZodiacServiceBlockingStub(io.grpc.Channel channel) {
+  public static final class ZodiacServiceBlockingStub extends io.grpc.stub.AbstractStub<ZodiacServiceBlockingStub> {
+    private ZodiacServiceBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private ChineseZodiacServiceBlockingStub(io.grpc.Channel channel,
+    private ZodiacServiceBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected ChineseZodiacServiceBlockingStub build(io.grpc.Channel channel,
+    protected ZodiacServiceBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new ChineseZodiacServiceBlockingStub(channel, callOptions);
+      return new ZodiacServiceBlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public proto.ChineseZodiac.ZodiacResponse getZodiacSign(proto.ChineseZodiac.ZodiacRequest request) {
+    public proto.Gate.ZodiacResponse getZodiacSign(proto.Gate.ZodiacRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetZodiacSignMethod(), getCallOptions(), request);
     }
@@ -161,26 +164,26 @@ public final class ChineseZodiacServiceGrpc {
 
   /**
    */
-  public static final class ChineseZodiacServiceFutureStub extends io.grpc.stub.AbstractStub<ChineseZodiacServiceFutureStub> {
-    private ChineseZodiacServiceFutureStub(io.grpc.Channel channel) {
+  public static final class ZodiacServiceFutureStub extends io.grpc.stub.AbstractStub<ZodiacServiceFutureStub> {
+    private ZodiacServiceFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private ChineseZodiacServiceFutureStub(io.grpc.Channel channel,
+    private ZodiacServiceFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected ChineseZodiacServiceFutureStub build(io.grpc.Channel channel,
+    protected ZodiacServiceFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new ChineseZodiacServiceFutureStub(channel, callOptions);
+      return new ZodiacServiceFutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ChineseZodiac.ZodiacResponse> getZodiacSign(
-        proto.ChineseZodiac.ZodiacRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<proto.Gate.ZodiacResponse> getZodiacSign(
+        proto.Gate.ZodiacRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetZodiacSignMethod(), getCallOptions()), request);
     }
@@ -193,10 +196,10 @@ public final class ChineseZodiacServiceGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final ChineseZodiacServiceImplBase serviceImpl;
+    private final ZodiacServiceImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(ChineseZodiacServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(ZodiacServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -206,8 +209,14 @@ public final class ChineseZodiacServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_ZODIAC_SIGN:
-          serviceImpl.getZodiacSign((proto.ChineseZodiac.ZodiacRequest) request,
-              (io.grpc.stub.StreamObserver<proto.ChineseZodiac.ZodiacResponse>) responseObserver);
+          try {
+            serviceImpl.getZodiacSign((Gate.ZodiacRequest) request,
+                (io.grpc.stub.StreamObserver<Gate.ZodiacResponse>) responseObserver);
+          } catch (FileNotFoundException e) {
+            e.printStackTrace();
+          } catch (ParseException e) {
+            e.printStackTrace();
+          }
           break;
         default:
           throw new AssertionError();
@@ -225,32 +234,32 @@ public final class ChineseZodiacServiceGrpc {
     }
   }
 
-  private static abstract class ChineseZodiacServiceBaseDescriptorSupplier
+  private static abstract class ZodiacServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    ChineseZodiacServiceBaseDescriptorSupplier() {}
+    ZodiacServiceBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return proto.ChineseZodiac.getDescriptor();
+      return proto.Zodiac.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("ChineseZodiacService");
+      return getFileDescriptor().findServiceByName("ZodiacService");
     }
   }
 
-  private static final class ChineseZodiacServiceFileDescriptorSupplier
-      extends ChineseZodiacServiceBaseDescriptorSupplier {
-    ChineseZodiacServiceFileDescriptorSupplier() {}
+  private static final class ZodiacServiceFileDescriptorSupplier
+      extends ZodiacServiceBaseDescriptorSupplier {
+    ZodiacServiceFileDescriptorSupplier() {}
   }
 
-  private static final class ChineseZodiacServiceMethodDescriptorSupplier
-      extends ChineseZodiacServiceBaseDescriptorSupplier
+  private static final class ZodiacServiceMethodDescriptorSupplier
+      extends ZodiacServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    ChineseZodiacServiceMethodDescriptorSupplier(String methodName) {
+    ZodiacServiceMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -265,11 +274,11 @@ public final class ChineseZodiacServiceGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (ChineseZodiacServiceGrpc.class) {
+      synchronized (ZodiacServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new ChineseZodiacServiceFileDescriptorSupplier())
+              .setSchemaDescriptor(new ZodiacServiceFileDescriptorSupplier())
               .addMethod(getGetZodiacSignMethod())
               .build();
         }
