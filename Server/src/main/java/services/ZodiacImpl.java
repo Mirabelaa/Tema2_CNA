@@ -48,8 +48,6 @@ public class ZodiacImpl extends ZodiacServiceGrpc.ZodiacServiceImplBase {
                 Date end = dateFormat.parse(e);
 
                 if (date1.after(begin) && date1.before(end) || date1.equals(begin) || date1.equals(end)) {
-
-                    System.out.println("daaaa");
                     return name;
                 }
             }
@@ -58,9 +56,6 @@ public class ZodiacImpl extends ZodiacServiceGrpc.ZodiacServiceImplBase {
         }
         return "not found";
     }
-
-    Map<Map<String,String>,String> zodiacSigns = new HashMap<>();
-
 
     @Override
     public void getZodiacSign(Gate.ZodiacRequest request, StreamObserver<Gate.ZodiacResponse> responseObserver) throws FileNotFoundException, ParseException {

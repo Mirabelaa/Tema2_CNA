@@ -1,5 +1,8 @@
 package proto;
 
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
@@ -89,7 +92,7 @@ public final class ChineseZodiacServiceGrpc {
     /**
      */
     public void getZodiacSign(proto.Gate.ZodiacRequest request,
-        io.grpc.stub.StreamObserver<proto.Gate.ZodiacResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.Gate.ZodiacResponse> responseObserver) throws FileNotFoundException, ParseException {
       asyncUnimplementedUnaryCall(getGetZodiacSignMethod(), responseObserver);
     }
 
@@ -206,8 +209,14 @@ public final class ChineseZodiacServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_ZODIAC_SIGN:
-          serviceImpl.getZodiacSign((proto.Gate.ZodiacRequest) request,
-              (io.grpc.stub.StreamObserver<proto.Gate.ZodiacResponse>) responseObserver);
+          try {
+            serviceImpl.getZodiacSign((Gate.ZodiacRequest) request,
+                (io.grpc.stub.StreamObserver<Gate.ZodiacResponse>) responseObserver);
+          } catch (FileNotFoundException e) {
+            e.printStackTrace();
+          } catch (ParseException e) {
+            e.printStackTrace();
+          }
           break;
         default:
           throw new AssertionError();
