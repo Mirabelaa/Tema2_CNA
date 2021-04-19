@@ -18,38 +18,11 @@ import java.util.Map;
 
 public class ChineseZodiacImpl extends ChineseZodiacServiceGrpc.ChineseZodiacServiceImplBase {
 
-    private static String date_format = "dd/MM/yyyy";
-
-    public String findZodiacSign(String date) throws FileNotFoundException, ParseException {
-        Map<ArrayList<String>, String> zodiacSigns = new HashMap<>();
-        ReadZodiac zod = new ReadZodiac();
-        try {
-            zodiacSigns = zod.readChineseZodiacSignsFormFile("/facultate/an2/sem2/CNA/tema2/Server/src/main/resources/chineseZodiac.txt");
-        } catch (java.io.FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
-        String saa=date.substring(6,10);
-
-        for (Map.Entry<ArrayList<String>, String> entry : zodiacSigns.entrySet()) {
-            ArrayList<String> years = entry.getKey();
-            String name = entry.getValue();
-            System.out.println(name);
-            for (String s : years) {
-
-                if (saa.equals(s)) {
-                    return name;
-                }
-            }
-        }
-        return "not found";
-    }
-
     @Override
     public void getZodiacSign(Gate.ZodiacRequest request, StreamObserver<Gate.ZodiacResponse> responseObserver) throws FileNotFoundException, ParseException {
-        Validation v = new Validation();
-        if (v.isDateValid(request.getDate())) {
-            Gate.ZodiacResponse response = Gate.ZodiacResponse.newBuilder().setZodiacSign(findZodiacSign(request.getDate())).build();
+        ZodiacHelper helper = new ZodiacHelper();
+        if (helper.isDateValid(request.getDate())) {
+            Gate.ZodiacResponse response = Gate.ZodiacResponse.newBuilder().setZodiacSign(helper.findChineseZodiacSign(request.getDate())).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }

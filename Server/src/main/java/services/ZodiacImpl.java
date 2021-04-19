@@ -17,52 +17,12 @@ import java.util.*;
 
 public class ZodiacImpl extends ZodiacServiceGrpc.ZodiacServiceImplBase {
 
-    private static String date_format="dd/MM/yyyy";
-
-
-
-    public String findZodiacSign(String date) throws FileNotFoundException, ParseException {
-        Map<Map<String,String>,String> zodiacSigns=new HashMap<>();
-        ReadZodiac zod = new ReadZodiac();
-        try {
-            zodiacSigns = zod.readZodiacSignsFormFile("/facultate/an2/sem2/CNA/tema2/Server/src/main/resources/zodiac.txt");
-        }
-        catch(java.io.FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        DateFormat dateFormat= new SimpleDateFormat(date_format);
-        Date date1 = dateFormat.parse(date);
-
-        System.out.println(date1);
-        for(Map.Entry<Map<String,String>,String> entry : zodiacSigns.entrySet())
-        {
-            Map<String,String> dates = entry.getKey();
-            String name = entry.getValue();
-            for(Map.Entry<String,String> entry1 : dates.entrySet()) {
-                String b= entry1.getKey()+date.substring(5,10);
-
-                Date begin = dateFormat.parse(b);
-                String e= entry1.getValue()+date.substring(5,10);
-
-                Date end = dateFormat.parse(e);
-
-                if (date1.after(begin) && date1.before(end) || date1.equals(begin) || date1.equals(end)) {
-                    return name;
-                }
-            }
-
-
-        }
-        return "not found";
-    }
-
     @Override
     public void getZodiacSign(Gate.ZodiacRequest request, StreamObserver<Gate.ZodiacResponse> responseObserver) throws FileNotFoundException, ParseException {
-        Validation v = new Validation();
-        if(v.isDateValid(request.getDate()))
+        ZodiacHelper helper = new ZodiacHelper();
+        if(helper.isDateValid(request.getDate()))
         {
-            Gate.ZodiacResponse response = Gate.ZodiacResponse.newBuilder().setZodiacSign(findZodiacSign(request.getDate())).build();
+            Gate.ZodiacResponse response = Gate.ZodiacResponse.newBuilder().setZodiacSign(helper.findZodiacSign(request.getDate())).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
